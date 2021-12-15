@@ -1,0 +1,1369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+
+
+
+ 
+<category>
+    <pattern>Hej</pattern>
+    <template><think><set name = "topic">imie</set></think>Cześć, jestem Adam. Jak masz na imie?</template>
+</category>
+
+<topic name = "imie">
+    <category>
+    <pattern>*</pattern>
+    <template>Witaj <set name="username"><star /></set>! Świetne imie!</template>
+    </category>
+    <category>
+        <pattern>dzieki</pattern>
+        <template><think><set name = "topic">kimjestem</set></think>Nie ma za co! Może opowiedzieć Ci od czego jestem?</template>
+    </category>
+</topic>
+
+
+<category>
+    <pattern>Jak mam na imie*</pattern>
+    <template>Twoje imie to <get name = "username"/></template>
+</category>
+ 
+ 
+ <topic name = "kimjestem">
+    <category>
+        <pattern>tak</pattern>
+        <template>
+            <random>
+                <li>A więc mam pewna wiedze na temat skokow narciarskich.  </li>
+                <li>Jestem twoim botem Interesuje sie skokami narciarskimi. </li>
+                <li>Już Ci mówię, jestem fanem skokow narciarskich. </li>
+            </random>
+                 <think><set name = "topic">SKOCZKOWIE</set></think>Jaki jest Twoj ulubiony skoczek?
+        </template>
+    </category>
+    <category>
+        <pattern>nie</pattern>
+        <template>
+            <random>
+                <li>A więc mam pewna wiedze na temat skokow narciarskich.  </li>
+                <li>Jestem twoim botem Interesuje sie skokami narciarskimi. </li>
+                <li>Już Ci mówię, jestem fanem skokow narciarskich. </li>
+            </random>
+                 Jaki jest Twoj ulubiony skoczek?
+        </template>
+    </category>
+    
+ </topic>
+
+
+  
+    <category>
+        <pattern>Kim jestes</pattern>
+        <template><think><set name = "topic">kim</set></think>Jestem fanem skokow narciarskich a Ty?</template>
+    </category>
+    
+    <topic name="kim">
+        <category>
+            <pattern>*</pattern>
+        <template><think><set name = "topic">pogadanka</set></think> Super, miło mi poznać! chcesz pogadać o skokach?</template>
+        </category>
+        
+        <topic name="pogadanka">
+            <category>
+                <pattern>TAK</pattern>
+                <template><think><set name = "topic">SKOKI</set></think> W takim razie przejdzmy do skokow tak?</template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">OCZYM</set></think> W takim razie o czym chcesz rozmawiac?</template>
+            </category>
+            <category>
+                <pattern>*</pattern>
+                <template>Napisz tak lub nie</template>
+            </category>
+        </topic>
+        
+        <topic name="OCZYM">
+            <category>
+                <pattern>*</pattern>
+                <template><think><set name = "topic">SKOKI</set></think>Przykro mi, ja głownie umiem o skokach mowić</template>
+            </category>
+        </topic>
+        
+        
+        
+    </topic>
+    
+    <category>
+        <pattern>Czy wiesz kim jestes *</pattern>
+        <template><srai>Kim jestes <star/></srai></template>
+    </category>
+    
+        
+    <category>
+        <pattern>Czy *</pattern>
+        <template>Jestem w stanie stwierdzić, ze <srai><star/></srai></template>
+    </category>
+
+<topic name="SKOKI">
+    <category>
+        <pattern>*</pattern>
+        <template><think><set name = "topic">SKOCZKOWIE</set></think>Możemy pomówić o skoczkach, a nie o reprezentacji?</template>
+    </category>
+    
+    <category>
+    <pattern>Czy wiesz kim jest * </pattern>
+    <template><srai>Kim jest <star/></srai></template>
+    </category>
+    
+    <category>
+        <pattern>SKOCZKA</pattern>
+        <template>
+            <think><set name = "topic">SKOCZKOWIE</set></think>Ooo, o indywidualnościach zawsze świetnie porozmawiać. Jakiego skoczka masz na myśli?
+        </template>
+    </category>
+        
+    <category>
+        <pattern>REPREZENTACJE</pattern>
+        <template>
+            <think><set name = "topic">REPREZENTACJE</set></think>Cieszy mnie to. Jaka kraj Cię interesuje?
+        </template>
+    </category>
+    
+    <topic name="SKOCZKOWIE">
+        <category>
+            <pattern>*</pattern>
+            <template>
+            <think><set name="var"><star /></set></think>
+            <condition>
+            <li name="var" value="tak">
+            Dobrze. Jaki skoczek Ci przychodzi na myśl?
+            <think><set name="topic">SKOCZKOWIE</set></think>
+            </li>
+            <li name="var" value="nie">
+            A więc jaka reprezentacja Ci przychodzi na myśl?
+            <think><set name="topic">REPREZENTACJE</set></think>
+            </li>
+            <li name="var" value="*">
+                Napisz dokładnie o kogo lub o jaki kraj Ci chodzi.. Mogę nie znać wszystkich skoczków, więc spytaj o któregoś z czołówki z tego sezonu. :)
+            </li>
+            </condition>
+            </template>
+        </category>
+        
+        <!-- SKOCZKOWIE________________________________________________________________________________________-->
+        
+        <category>
+            <pattern>STOCH</pattern>
+                <template>
+                    <think><set name = "topic">STOCH</set></think>Super, powiedzieć Ci pare rzeczy o Kamilu?
+                </template>
+        </category>
+
+        <topic name="STOCH">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Polski. Mam rację? </li>
+                    <li>Jest tryumfatorem pucharu swiata 2013/2014. Mam rację? </li>
+                    <li>Był na 3 miejscu w tegorocznym pucharze świata. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+            <topic name="cokolwiek">
+                <category>
+                <pattern>*</pattern>
+                <template><think><set name = "topic">SKOKI</set></think>Dobrze, to może chcesz spytać o kolejnego skoczka?</template>
+                </category>
+            </topic>
+        </topic>
+            
+            
+            <category>
+            <pattern>TANDE</pattern>
+                <template>
+                    <think><set name = "topic">TANDE</set></think>Super, powiedzieć Ci pare rzeczy o DANIELU ANDRE TANDE?
+                </template>
+        </category>
+
+        <topic name="TANDE">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Norwegii. Mam rację? </li>
+                    <li>Jest tryumfatorem pucharu swiata. Mam rację? </li>
+                    <li>Obecnie jest kontuzjowany. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        
+        <category>
+            <pattern>Takeuchi</pattern>
+                <template>
+                    <think><set name = "topic">TAKEUCHI</set></think>Super, powiedzieć Ci pare rzeczy o TAKEUCHIM?
+                </template>
+        </category>
+
+        <topic name="TAKEUCHI">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Japonii. Mam rację? </li>
+                    <li>Skacze regularnie. Mam rację? </li>
+                    <li>Nie jest utytuowany. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        
+        <category>
+            <pattern>KASAI</pattern>
+                <template>
+                    <think><set name = "topic">KASAI</set></think>Super, powiedzieć Ci pare rzeczy o KASAIM?
+                </template>
+        </category>
+
+        <topic name="KASAI">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Japonii. Mam rację? </li>
+                    <li>Jest najstarszym skoczkiem tryumfującym w zawodach. Mam rację? </li>
+                    <li>Co ciekawe dalej skacze mając prawie 50 lat. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        
+        <category>
+            <pattern>STEKALA</pattern>
+                <template>
+                    <think><set name = "topic">STEKALA</set></think>Super, powiedzieć Ci pare rzeczy o Andrzeju?
+                </template>
+        </category>
+
+        <topic name="STEKALA">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Polski. Mam rację? </li>
+                    <li>Najlepszy jego sezon w karierze to 2020/21. Mam rację? </li>
+                    <li>Był na 16 miejscu. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        
+        <category>
+            <pattern>PREVC</pattern>
+                <template>
+                    <think><set name = "topic">PREVC</set></think>Super, powiedzieć Ci pare rzeczy o GRANERUDZIE?
+                </template>
+        </category>
+
+        <topic name="PREVC">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Slowenii. Mam rację? </li>
+                    <li>Jest tryumfatorem pucharu swiata i dalej ma fobra forme. Mam rację? </li>
+                    <li>Swego czasu byl najlepszym skoczkiem swiata. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+            
+            <category>
+            <pattern>EISENBICHLER</pattern>
+                <template>
+                    <think><set name = "topic">EISENBICHLER</set></think>Super, powiedzieć Ci pare rzeczy o Markusie?
+                </template>
+        </category>
+
+        <topic name="EISENBICHLER">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Niemiec. Mam rację? </li>
+                    <li>Nigdy nie wygrał kryształowej kuli ale wygrał pare konkursów pucharu świata. Mam rację? </li>
+                    <li>W ostatnim sezonie 2020/2021 zajął 2 miejsce co jest jego najlepszym wynikiem w karierze. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+            
+            <category>
+            <pattern>KOBAYASHI</pattern>
+                <template>
+                    <think><set name = "topic">KOBAYASHI</set></think>Super, powiedzieć Ci pare rzeczy o Japończyku?
+                </template>
+        </category>
+
+        <topic name="KOBAYASHI">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Japonii. Mam rację? </li>
+                    <li>Jest tryumfatorem pucharu swiata 2018/2019. Mam rację? </li>
+                    <li>W obecnym sezonie zajął 4 miejsce zaraz za Kamilem Stochem. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+            
+            <category>
+            <pattern>GEIGER</pattern>
+                <template>
+                    <think><set name = "topic">GEIGER</set></think>Super, powiedzieć Ci pare rzeczy o Geigerze?
+                </template>
+        </category>
+
+        <topic name="GEIGER">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Niemiec. Mam rację? </li>
+                    <li>Sezon 2020/2021 jest jego najlepszym w karierze. Mam rację? </li>
+                    <li>Jest mistrzem świata w lotach z tego roku. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+            
+            <category>
+            <pattern>JOHANSSON</pattern>
+                <template>
+                    <think><set name = "topic">JOHANSSON</set></think>Super, powiedzieć Ci pare rzeczy o wąsaczu?
+                </template>
+        </category>
+
+        <topic name="JOHANSSON">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Norwegii. Mam rację? </li>
+                    <li>Jego atutem są loty na skoczniach mamucich. Mam rację? </li>
+                    <li>Ten sezon był dla niego jednym z lepszych ponieważ zajął 5 miejsce. Od dłuższego czasu utrzymuje dobrą formę. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+            
+            <category>
+            <pattern>ŻYŁA</pattern>
+                <template>
+                    <think><set name = "topic">ZYLA</set></think>Super, powiedzieć Ci pare rzeczy o Piotrku Żyle?
+                </template>
+        </category>
+
+        <topic name="ZYLA">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Polski. Mam rację? </li>
+                    <li>Jest mistrzem świata ze skoczni dużej z tego sezonu. Mam rację? </li>
+                    <li>Zdobył złotego bażanta na turnieju czterech skoczni w rywalizacji z Stękałą. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+            
+            <category>
+            <pattern>KUBACKI</pattern>
+                <template>
+                    <think><set name = "topic">KUBACKI</set></think>Super, powiedzieć Ci pare rzeczy o Dawidzie?
+                </template>
+        </category>
+
+        <topic name="KUBACKI">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Polski. Mam rację? </li>
+                    <li>Wygrał w poprzednim sezonie turniej czterech skoczni. Mam rację? </li>
+                    <li>Cechuje się tym, że podczas lotu znosi jego sylwetkę w prawą stronę skoczni. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+            
+            <category>
+            <pattern>SATO</pattern>
+                <template>
+                    <think><set name = "topic">SATO</set></think>Super, powiedzieć Ci pare rzeczy o YUKII SATO?
+                </template>
+        </category>
+
+        <topic name="SATO">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Japonii. Mam rację? </li>
+                    <li>Obecny sezon jest dla niego najlepszym w karierze. Mam rację? </li>
+                    <li>Jest określany przez polskich komentatorów jako "filigranowy japończyk". Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+            
+            <category>
+            <pattern>KRAFT</pattern>
+                <template>
+                    <think><set name = "topic">KRAFT</set></think>Super, powiedzieć Ci pare rzeczy o Stefanie?
+                </template>
+        </category>
+
+        <topic name="KRAFT">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Na pewno jest skoczkiem reprezentacji Austrii. Mam rację? </li>
+                    <li>Jest tryumfatorem pucharu swiata. Mam rację? </li>
+                    <li>Zaraz obok Kamila Stocha cechuje się najlepszym stylem w locie jak i przy lądowaniu. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+            
+            <category>
+                <pattern>WYSTARCZY</pattern>
+                <template><think><set name = "topic">SKOKI</set></think>Dobrze, to chciałbyś spytać może jeszcze o jakiegoś skoczka, czy może reprezentacje?</template>
+            </category>
+        </topic>
+        
+        
+        <!-- REPREZENTACJE ______________________________________________________________-->
+        
+    </topic>
+    <topic name="REPREZENTACJE">
+        
+        <category>
+            <pattern>Norwegia</pattern>
+                <template>
+                    <think><set name = "topic">NOR</set></think>Super, powiedzieć Ci pare rzeczy o reprezentacji Norwegii?
+                </template>
+        </category>
+
+        <topic name="NOR">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Jej reprezentantem jest GRANERUD Halvor Egner. Mam rację? </li>
+                    <li>Jej reprezentantem jest FORFANG Johann Andre. Mam rację? </li>
+                    <li>Jej reprezentantem jest JOHANSSON Robert. Mam rację?</li>
+                    <li>Jej reprezentantem jest LINDVIK Marius. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        
+        <category>
+            <pattern>POLSKA</pattern>
+                <template>
+                    <think><set name = "topic">POL</set></think>Super, powiedzieć Ci pare rzeczy o reprezentacji Polski?
+                </template>
+        </category>
+
+        <topic name="POL">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Jej reprezentantem jest STOCH Kamil. Mam rację? </li>
+                    <li>Jej reprezentantem jest KUBACKI Dawid. Mam rację? </li>
+                    <li>Jej reprezentantem jest ŻYŁA Piotr. Mam rację?</li>
+                    <li>Jej reprezentantem jest WOLNY Jakub. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        <category>
+            <pattern>AUS</pattern>
+                <template>
+                    <think><set name = "topic">AUS</set></think>Super, powiedzieć Ci pare rzeczy o reprezentacji Austrii?
+                </template>
+        </category>
+
+        <topic name="AUS">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Jej reprezentantem jest KRAFT Stefan. Mam rację? </li>
+                    <li>Jej reprezentantem jest HOERL Jan. Mam rację? </li>
+                    <li>Jej reprezentantem jest SHLIERENZAUER Gregor. Mam rację?</li>
+                    <li>Jej reprezentantem jest HUBER Daniel. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        
+        <category>
+            <pattern>SLOVENIA</pattern>
+                <template>
+                    <think><set name = "topic">SLO</set></think>Super, powiedzieć Ci pare rzeczy o reprezentacji Słowenii?
+                </template>
+        </category>
+
+        <topic name="SLO">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Jej reprezentantem jest PREVC Peter. Mam rację? </li>
+                    <li>Jej reprezentantem jest PREVC Domen. Mam rację? </li>
+                    <li>Jej reprezentantem jest PREVC Cene. Mam rację?</li>
+                    <li>Jej reprezentantem jest PAVLOVCIC Bor. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        
+        <category>
+            <pattern>JAPONIA</pattern>
+                <template>
+                    <think><set name = "topic">JAP</set></think>Super, powiedzieć Ci pare rzeczy o reprezentacji Japonii?
+                </template>
+        </category>
+
+        <topic name="JAP">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Jej reprezentantem jest KOBAYASHI Ryoyu. Mam rację? </li>
+                    <li>Jej reprezentantem jest KOBAYASHI Junshiro. Mam rację? </li>
+                    <li>Jej reprezentantem jest SATO Yukia. Mam rację?</li>
+                    <li>Jej reprezentantem jest SATO Keichi. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+        
+        <category>
+            <pattern>NIEMCY</pattern>
+                <template>
+                    <think><set name = "topic">NIE</set></think>Super, powiedzieć Ci pare rzeczy o reprezentacji Niemiec?
+                </template>
+        </category>
+
+        <topic name="NIE">
+            <category>
+                <pattern>TAK</pattern>
+                <template>
+                    <random>
+                    <li>Jej reprezentantem jest GEIGER Karl. Mam rację? </li>
+                    <li>Jej reprezentantem jest EISENBICHLER Markus. Mam rację? </li>
+                    <li>Jej reprezentantem jest FREUND Severin. Mam rację?</li>
+                    <li>Jej reprezentantem jest FREITAG Rihard. Jeśli wystarczą Ci te informacje możesz mi napisać, że wystarczy </li>
+                    </random>
+                </template>
+            </category>
+            <category>
+                <pattern>NIE</pattern>
+                <template><think><set name = "topic">cokolwiek</set></think>Szkoda że tak piszesz..</template>
+            </category>
+        </topic>
+        
+    </topic>
+    
+</topic>
+
+
+
+<category>
+    <pattern>BYLO</pattern>
+    <template><think><set name = "topic">ZART</set></think>Przepraszam za powtórzenie się. Może w ramach rekompenstaty żart na rozluźnienie atmosfery?</template>
+</category>
+
+<topic name="ZART">
+    <category>
+        <pattern>NIE</pattern>
+        <template><think><set name = "topic">JESTESNAJLEPSZY</set></think>Dobrze, wybacz mi, ale pamiętaj, że jesteś zawsze najlepszą wersją samego siebie! :)</template>
+    </category>
+    <category>
+        <pattern>TAK</pattern>
+        <template><think><set name = "topic"></set></think>
+        <random>
+            <li>
+Pani na lekcji :
+-Jasiu która rzeka jest dłuższa Ren czy Missisipi?
+-Missisipi
+-a o ile
+-o 6 liter</li>
+            <li>
+                Pani katechetka pyta na lekcji religi:
+- kim jest dla nas Pan Jezus??
+Zgłasza się Magda:
+- Jezus jest pasterzem...
+- Dobrze Magdziu, a w takim razie kim my jesteśmy...
+Zgłasza się Jasiu:
+- Proszę pani my jesteśmy stadem baranów...
+            </li>
+            <li>
+                Jaś wchodzi do domu i kładzie na stół plecak pełen jabłek.
+- Skąd masz te jabłka? pyta mama.
+- Od sąsiada.
+A sąsiad o tym wie???
+- No pewnie! Przecież mnie gonił!!!!!!
+            </li>
+            Pracownik banku próbuje wytłumaczyć klientowi zasady płacenia na raty.
+Proszę pana najpierw płaci pan niewielką sumę a potem przez 3 miesiące nie płaci pan nic.
+Na to klient:
+- To pan mnie zna?
+            <li>
+                 Panie dyrektorze,czy mógłbym otrzymać dzień urlopu,aby pomóc teściowej przy przeprowadzce?
+- Wykluczone!!!!!
+- Bardzo dziękuje,wiedziałem że mogę na pana liczyć!
+                
+            </li>
+            
+            <li>
+               Pan Adam, jak co miesiąc, idzie odebrać swoją wypłatę. Wchodzi do biura. Kierownik mu mówi:
+- Nie dostanie pan wypłaty!
+- A czemu???
+- Bo przez cały miesiąc był pan na urlopie!
+            </li>
+            
+            <li>
+                Na budowie:
+- Panie majster łopata mi się połamała!
+-To oprzyj się o betoniarkę
+                
+            </li>
+            
+            <li>
+                - Jak mogłeś dopuścić, aby ten wiezień ukradł ci klucz?! - złości się naczelnik na strażnika.
+- On go wcale nie ukradł, tylko uczciwie wygrał w karty...
+                
+            </li>
+        </random></template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template><think><set name = "topic">SKOKI</set></think>Ciesze sie ze rozsmieszyłem, może przejdziemy do tematu na ktorym sie znam czyli o skokach narciarskich?</template>
+    </category>
+    <topic name ="wystarczy">
+        <category>
+            <pattern>WYSTARCZY</pattern>
+            <template></template>
+        </category>
+    </topic>
+</topic>
+
+    
+<category>
+<pattern>*
+</pattern>
+<template>
+Naprawde tak myslisz ?
+<think><set name="topic">WKOLO</set></think>
+</template>
+</category>
+<topic name="WKOLO">
+<category>
+<pattern>*</pattern>
+<template>
+<think><set name="var"><star /></set></think>
+<condition>
+<li name="var" value="tak">
+Przyznajesz sie.
+<think><set name="topic">ZART</set></think>
+</li>
+<li name="var" value="nie">
+Wypierasz sie.
+<think><set name="topic">ZART</set></think>
+</li>
+<li>Tak czy nie ?</li>
+</condition>
+<think><set name = "topic">WYJSCIE</set></think>Dobra wystarczy
+</template>
+</category>
+</topic>    
+
+<topic name="WYJSCIE">
+    <category>
+        <pattern>*</pattern>
+        <template><think><set name = "topic">SKOKI</set></think>Przejdziemy do tematu na ktorym sie znam czyli o skokach narciarskich? Proszę</template>
+    </category>
+    
+    <topic name="UWAGA">
+        <category>
+        <pattern>*</pattern>
+            <template>Dlaczego tak myslisz</template>
+            </category>
+            <category>
+            <pattern>*</pattern>
+            <that>Dlaczego tak myslisz</that>
+            <template>
+            <think><set name="topic">SKOKI_PRE</set></think>Nie sadze, zeby <set name="to"><star/></set> bylo wystarczajacym wyjasnieniem. Czy naprawde uwazasz, ze '<get name="to"/>' wystarczy ?
+            </template>
+        </category>
+    </topic>
+    
+    <topic name="SKOKI_PRE">
+        <pattern>*</pattern>
+        <template>
+            <think><set name="topic">SKOKI</set></think>Dobrze, przejdźmy do mojej profesji, okey?
+        </template>
+    </topic>
+    
+</topic>
+
+
+    
+<!-- IMPLEMENTACJA SYNONIMOW DLA SŁÓW CZĘSTO UŻYWANYCH -->
+    
+
+<category>
+    <pattern>DZIEN DOBRY</pattern>
+    <template><srai>HEJ</srai></template>
+</category>
+<category>
+    <pattern>WITAJ</pattern>
+    <template><srai>HEJ</srai></template>
+</category>
+<category>
+    <pattern>CZESC</pattern>
+    <template><srai>HEJ</srai></template>
+</category>
+<category>
+    <pattern>DOBRY WIECZOR</pattern>
+    <template><srai>HEJ</srai></template>
+</category>
+
+<category>
+    <pattern>HEJ *</pattern>
+    <template>
+        <srai>HEJ</srai>
+    </template>
+</category>
+<category>
+    <pattern>CZESC *</pattern>
+    <template>
+        <srai>HEJ</srai>
+    </template>
+</category>
+<category>
+    <pattern>WITAJ *</pattern>
+    <template>
+        <srai>HEJ</srai>
+    </template>
+</category>
+<category>
+    <pattern>DZIEN DOBRY *</pattern>
+    <template>
+        <srai>HEJ</srai>
+    </template>
+</category>
+
+
+
+<category>
+    <pattern>DOKLADNIE</pattern>
+    <template>
+        <srai>TAK</srai>
+    </template>
+</category>
+<category>
+    <pattern>OCZYWISCIE</pattern>
+    <template>
+        <srai>TAK</srai>
+    </template>
+</category>
+<category>
+    <pattern>Z PEWNOSCIA</pattern>
+    <template>
+        <srai>TAK</srai>
+    </template>
+</category>
+<category>
+    <pattern>PEWNIE</pattern>
+    <template>
+        <srai>TAK</srai>
+    </template>
+</category>    
+<category>
+    <pattern>DOBRZE</pattern>
+    <template>
+        <srai>TAK</srai>
+    </template>
+</category>    
+<category>
+    <pattern>MOW DALEJ</pattern>
+    <template>
+        <srai>TAK</srai>
+    </template>
+</category>    
+
+
+
+<!-- ODNIESIENIA DO PODOBNYCH FORM WYRAZÓW TAK ABY KOMUNIKACJA BYŁA UŁATWIONA -->
+  
+<category>
+    <pattern>REPREZENTACJE *</pattern>
+    <template>
+        <srai>REPREZENTACJE</srai>
+    </template>
+</category>
+<category>
+    <pattern>REPREZENTACJ*</pattern>
+    <template>
+        <srai>REPREZENTACJE</srai>
+    </template>
+</category>
+<category>
+    <pattern>* REPREZENTACJ *</pattern>
+    <template>
+        <srai>REPREZENTACJE</srai>
+    </template>
+</category>
+<category>
+    <pattern>GRANERUD *</pattern>
+    <template>
+        <srai>GRANERUD</srai>
+    </template>
+</category>
+<category>
+    <pattern>* GRANERUDZIE</pattern>
+    <template>
+        <srai>GRANERUD</srai>
+    </template>
+</category>
+<category>
+    <pattern>* GRANERUD</pattern>
+    <template>
+        <srai>GRANERUD</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>EISENBICHLER *</pattern>
+    <template>
+        <srai>EISENBICHLER</srai>
+    </template>
+</category>
+<category>
+    <pattern>* EISENBICHLERZE</pattern>
+    <template>
+        <srai>EISENBICHLER</srai>
+    </template>
+</category>
+<category>
+    <pattern>* EISENBICHLER</pattern>
+    <template>
+        <srai>EISENBICHLER</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>STOCH *</pattern>
+    <template>
+        <srai>STOCH</srai>
+    </template>
+</category>
+<category>
+    <pattern>* STOCHU</pattern>
+    <template>
+        <srai>STOCH</srai>
+    </template>
+</category>
+<category>
+    <pattern>* STOCH</pattern>
+    <template>
+        <srai>STOCH</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>KOBAYASHI *</pattern>
+    <template>
+        <srai>KOBAYASHI</srai>
+    </template>
+</category>
+<category>
+    <pattern>* KOBAYASHIM</pattern>
+    <template>
+        <srai>KOBAYASHI</srai>
+    </template>
+</category>
+<category>
+    <pattern>* KOBAYASHI</pattern>
+    <template>
+        <srai>KOBAYASHI</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>KUBACKI *</pattern>
+    <template>
+        <srai>KUBACKI</srai>
+    </template>
+</category>
+<category>
+    <pattern>* KUBACKIM</pattern>
+    <template>
+        <srai>KUBACKI</srai>
+    </template>
+</category>
+<category>
+    <pattern>* KUBACKI</pattern>
+    <template>
+        <srai>KUBACKI</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>GEIGER *</pattern>
+    <template>
+        <srai>GEIGER</srai>
+    </template>
+</category>
+<category>
+    <pattern>* GEIGERZE</pattern>
+    <template>
+        <srai>GEIGER</srai>
+    </template>
+</category>
+<category>
+    <pattern>* GEIGER</pattern>
+    <template>
+        <srai>GEIGER</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>JOHANSSON *</pattern>
+    <template>
+        <srai>JOHANSSON</srai>
+    </template>
+</category>
+<category>
+    <pattern>* JOHANSSONIE</pattern>
+    <template>
+        <srai>JOHANSSON</srai>
+    </template>
+</category>
+<category>
+    <pattern>* JOHANSSON</pattern>
+    <template>
+        <srai>JOHANSSON</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>ZYLA *</pattern>
+    <template>
+        <srai>ZYLA</srai>
+    </template>
+</category>
+<category>
+    <pattern>* ZYLE</pattern>
+    <template>
+        <srai>ZYLA</srai>
+    </template>
+</category>
+<category>
+    <pattern>* ZYLA</pattern>
+    <template>
+        <srai>ZYLA</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>ŻYŁA *</pattern>
+    <template>
+        <srai>ZYLA</srai>
+    </template>
+</category>
+<category>
+    <pattern>* ŻYLE</pattern>
+    <template>
+        <srai>ZYLA</srai>
+    </template>
+</category>
+<category>
+    <pattern>* ŻYŁA</pattern>
+    <template>
+        <srai>ZYLA</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>SATO *</pattern>
+    <template>
+        <srai>SATO</srai>
+    </template>
+</category>
+<category>
+    <pattern>* SATO</pattern>
+    <template>
+        <srai>SATO</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>STOCH *</pattern>
+    <template>
+        <srai>STOCH</srai>
+    </template>
+</category>
+<category>
+    <pattern>* STOCHU</pattern>
+    <template>
+        <srai>STOCH</srai>
+    </template>
+</category>
+<category>
+    <pattern>* STOCH</pattern>
+    <template>
+        <srai>STOCH</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>STEKALA *</pattern>
+    <template>
+        <srai>STEKALA</srai>
+    </template>
+</category>
+<category>
+    <pattern>* STEKALE</pattern>
+    <template>
+        <srai>STEKALA</srai>
+    </template>
+</category>
+<category>
+    <pattern>* STEKALA</pattern>
+    <template>
+        <srai>STEKALA</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>STĘKAŁA *</pattern>
+    <template>
+        <srai>STEKALA</srai>
+    </template>
+</category>
+<category>
+    <pattern>* STĘKALE</pattern>
+    <template>
+        <srai>STEKALA</srai>
+    </template>
+</category>
+<category>
+    <pattern>* STĘKAŁA</pattern>
+    <template>
+        <srai>STEKALA</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>PREVC *</pattern>
+    <template>
+        <srai>PREVC</srai>
+    </template>
+</category>
+<category>
+    <pattern>* PREVC</pattern>
+    <template>
+        <srai>PREVC</srai>
+    </template>
+</category>
+<category>
+    <pattern>* KASAI</pattern>
+    <template>
+        <srai>KASAI</srai>
+    </template>
+</category>
+<category>
+    <pattern>KASAI *</pattern>
+    <template>
+        <srai>KASAI</srai>
+    </template>
+</category>
+<category>
+    <pattern>* KASAIM</pattern>
+    <template>
+        <srai>KASAI</srai>
+    </template>
+</category>
+<category>
+    <pattern>TANDE *</pattern>
+    <template>
+        <srai>TANDE</srai>
+    </template>
+</category>
+<category>
+    <pattern>* TANDE</pattern>
+    <template>
+        <srai>TANDE</srai>
+    </template>
+</category>
+<category>
+    <pattern>* TANDEM</pattern>
+    <template>
+        <srai>TANDE</srai>
+    </template>
+</category>
+
+
+
+
+
+
+<category>
+    <pattern>* BYLO</pattern>
+    <template>
+        <srai>BYLO</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* BYŁO</pattern>
+    <template>
+        <srai>BYLO</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>BYŁO</pattern>
+    <template>
+        <srai>BYLO</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>POWTARZASZ</pattern>
+    <template>
+        <srai>BYLO</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>POWTARZA</pattern>
+    <template>
+        <srai>BYLO</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>POWTARZASZ *</pattern>
+    <template>
+        <srai>BYLO</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* DOKLADNIE</pattern>
+    <template>
+        <srai>DOKLADNIE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>DOKLADNIE *</pattern>
+    <template>
+        <srai>DOKLADNIE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>OCZYWISCIE *</pattern>
+    <template>
+        <srai>OCZYWISCIE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>*OCZYWISCIE</pattern>
+    <template>
+        <srai>OCZYWISCIE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>Z PEWNOSCIA *</pattern>
+    <template>
+        <srai>Z PEWNOSCIA</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>PEWNIE *</pattern>
+    <template>
+        <srai>Z PEWNOSCIA</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* PEWNIE</pattern>
+    <template>
+        <srai>Z PEWNOSCIA</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* TAK</pattern>
+    <template>
+        <srai>TAK</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>TAK *</pattern>
+    <template>
+        <srai>TAK</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>NIE *</pattern>
+    <template>
+        <srai>NIE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>ABSOLUTNIE *</pattern>
+    <template>
+        <srai>NIE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>NIGDY *</pattern>
+    <template>
+        <srai>NIE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>DZIEKI *</pattern>
+    <template>
+        <srai>DZIEKI</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>DZIEKUJE</pattern>
+    <template>
+        <srai>DZIEKI</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>KTO *</pattern>
+    <template>
+        <srai>KTO</srai>
+    </template>
+</category>
+<category>
+    <pattern>* KTO</pattern>
+    <template>
+        <srai>KTO</srai>
+    </template>
+</category>
+
+
+  
+</aiml>
